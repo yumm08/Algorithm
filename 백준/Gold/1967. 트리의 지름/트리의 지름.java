@@ -31,6 +31,7 @@ public class Main {
             graph.add(new ArrayList<>());
         }
 
+        boolean[] startNode = new boolean[N + 1];
         for (int i = 0; i < N - 1; i++) {
             st = new StringTokenizer(br.readLine());
             int from = Integer.parseInt(st.nextToken());
@@ -38,11 +39,13 @@ public class Main {
             int cost = Integer.parseInt(st.nextToken());
 
             graph.get(from).add(new Node(to, cost));   
-            graph.get(to).add(new Node(from, cost));           
+            graph.get(to).add(new Node(from, cost));
+            startNode[from] = true;   
         }
 
         maxCost = 0;
         for (int i = 1; i <= N; i++) {
+            if (startNode[i]) continue;
             boolean[] visit = new boolean[N + 1];
             visit[i] = true;
 
