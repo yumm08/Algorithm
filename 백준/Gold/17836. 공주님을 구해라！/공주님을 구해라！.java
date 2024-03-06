@@ -50,47 +50,12 @@ public class Main {
 			}
 		}
 
-		// withoutSword();
 		withSword();
 		if (minTime == Integer.MAX_VALUE)
 			System.out.println("Fail");
 		else
 			System.out.println(minTime);
 	}
-
-	/**
-	 * private static void withoutSword() {
-	 * 
-	 * Queue<Node> queue = new ArrayDeque<>();
-	 * queue.add(new Node(0, 0, 0));
-	 * visit = new boolean[N][M];
-	 * visit[0][0] = true;
-	 * 
-	 * while (!queue.isEmpty()) {
-	 * Node now = queue.poll();
-	 * if (now.x == N - 1 && now.y == M - 1) {
-	 * minTime = Math.min(minTime, now.cnt);
-	 * return;
-	 * }
-	 * 
-	 * if (now.cnt > T) {
-	 * return;
-	 * }
-	 * 
-	 * for (int l = 0; l < 4; l++) {
-	 * int nx = now.x + del[l][0];
-	 * int ny = now.y + del[l][1];
-	 * 
-	 * if (!in_range(nx, ny) || map[nx][ny] == 1 || visit[nx][ny][now.sword]) {
-	 * continue;
-	 * }
-	 * 
-	 * queue.add(new Node(nx, ny, now.cnt + 1));
-	 * visit[nx][ny] = true;
-	 * }
-	 * }
-	 * }
-	 **/
 
 	private static void withSword() {
 
@@ -101,8 +66,6 @@ public class Main {
 
 		while (!queue.isEmpty()) {
 			Node now = queue.poll();
-
-			// System.out.println(now.x + " " + now.y + " " + now.cnt);
 
 			if (now.cnt > T) {
 				return;
@@ -120,7 +83,6 @@ public class Main {
 					continue;
 				}
 				if (map[nx][ny] == 2) {
-					// queue = new ArrayDeque<>();
 					queue.add(new Node(nx, ny, now.cnt + 1, 1));
 					visit[nx][ny][1] = true;
 				} else {
