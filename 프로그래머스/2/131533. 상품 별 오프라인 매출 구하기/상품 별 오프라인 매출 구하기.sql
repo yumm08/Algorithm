@@ -1,5 +1,4 @@
 -- 코드를 입력하세요
--- SELECT * FROM offline_sale;
 
 SELECT PRODUCT_CODE, SUM(p.PRICE*s.SALES_AMOUNT) as SALES 
 from product p join OFFLINE_SALE s 
